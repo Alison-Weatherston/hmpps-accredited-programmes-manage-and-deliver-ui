@@ -21,6 +21,7 @@ import {
   SentenceInformation,
   ThinkingAndBehaviour,
   UpdateAvailability,
+  CreateDeliveryLocationPreferences,
 } from '@manage-and-deliver-api'
 import { CaselistFilterParams } from '../caselist/CaseListFilterParams'
 import config, { ApiConfig } from '../config'
@@ -245,6 +246,19 @@ export default class AccreditedProgrammesManageAndDeliverService {
       path: `/risks-and-needs/${crn}/offence-analysis`,
       headers: { Accept: 'application/json' },
     })) as OffenceAnalysis
+  }
+
+  async createDeliveryLocationPreferences(
+    username: Express.User['username'],
+    referralId: string,
+    createDeliveryLocationPreferences: CreateDeliveryLocationPreferences,
+  ): Promise<CreateDeliveryLocationPreferences> {
+    const restClient = await this.createRestClientFromUsername(username)
+    return (await restClient.post({
+      path: `/delivery-location-preferences/referral/${referralId}`,
+      headers: { Accept: 'application/json' },
+      data: createDeliveryLocationPreferences,
+    })) as CreateDeliveryLocationPreferences
   }
 
   async getDeliveryLocationPreferences(

@@ -10,6 +10,7 @@ export default class PersonalDetailsPresenter extends ReferralDetailsPresenter {
     readonly subNavValue: string,
     readonly id: string,
     private personalDetails: PersonalDetails,
+    readonly isCohortUpdated: string,
   ) {
     super(referralDetails, subNavValue, id)
   }

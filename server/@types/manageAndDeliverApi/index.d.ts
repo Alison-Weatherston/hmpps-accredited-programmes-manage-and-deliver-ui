@@ -26,6 +26,7 @@ type ThinkingAndBehaviour = components['schemas']['ThinkingAndBehaviour']
 type UpdateAvailability = components['schemas']['UpdateAvailability']
 type CreateDeliveryLocationPreferences = components['schemas']['CreateDeliveryLocationPreferences']
 type DeliveryLocationPreferences = components['schemas']['DeliveryLocationPreferences']
+type PreferredDeliveryLocation = components['schemas']['PreferredDeliveryLocation']
 
 export type {
   AlcoholMisuseDetails,
@@ -54,4 +55,5 @@ export type {
   ThinkingAndBehaviour,
   UpdateAvailability,
   CreateDeliveryLocationPreferences,
+  PreferredDeliveryLocation,
 }

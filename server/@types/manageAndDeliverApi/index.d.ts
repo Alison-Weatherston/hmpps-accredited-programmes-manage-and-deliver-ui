@@ -27,6 +27,7 @@ type UpdateAvailability = components['schemas']['UpdateAvailability']
 type CreateDeliveryLocationPreferences = components['schemas']['CreateDeliveryLocationPreferences']
 type DeliveryLocationPreferences = components['schemas']['DeliveryLocationPreferences']
 type PreferredDeliveryLocation = components['schemas']['PreferredDeliveryLocation']
+type ExistingDeliveryLocationPreferences = components['schemas']['ExistingDeliveryLocationPreferences']
 
 export type {
   AlcoholMisuseDetails,
@@ -56,4 +57,5 @@ export type {
   UpdateAvailability,
   CreateDeliveryLocationPreferences,
   PreferredDeliveryLocation,
+  ExistingDeliveryLocationPreferences,
 }

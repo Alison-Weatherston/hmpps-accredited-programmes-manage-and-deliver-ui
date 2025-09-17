@@ -20,7 +20,7 @@ export default class ReferralDetailsPresenter extends ReferralLayoutPresenter {
     readonly referralDetails: ReferralDetails,
     readonly subNavValue: string,
     readonly id: string,
-    readonly isCohortUpdated: boolean,
+    readonly isCohortUpdated: boolean = false,
   ) {
     super(HorizontalNavValues.referralDetailsTab, id)
   }
@@ -119,8 +119,8 @@ export default class ReferralDetailsPresenter extends ReferralLayoutPresenter {
         lines: [`${this.referralDetails.interventionName}`],
       },
       {
-        key: 'Programme strand',
-        lines: ['PLACEHOLDER'],
+        key: 'Cohort',
+        lines: [`${formatCohort(this.referralDetails.cohort)}`],
       },
       {
         key: 'Date referred',

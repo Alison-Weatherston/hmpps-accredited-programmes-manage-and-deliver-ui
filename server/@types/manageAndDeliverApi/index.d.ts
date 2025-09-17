@@ -23,7 +23,8 @@ type EmotionalWellbeing = components['schemas']['EmotionalWellbeing']
 type ThinkingAndBehaviour = components['schemas']['ThinkingAndBehaviour']
 type Risks = components['schemas']['Risks']
 type Attitude = components['schemas']['Attitude']
-
+type Referral = components['schemas']['Referral']
+type UpdateCohort = components['schemas']['UpdateCohort']
 export type {
   Availability,
   CohortEnum,
@@ -48,4 +49,6 @@ export type {
   ThinkingAndBehaviour,
   Attitude,
   Risks,
+  Referral,
+  UpdateCohort,
 }

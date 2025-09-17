@@ -1,10 +1,9 @@
-import AccreditedProgrammesManageAndDeliverService from "../services/accreditedProgrammesManageAndDeliverService";
-import {Request, Response} from "express";
-import ControllerUtils from "../utils/controllerUtils";
-import ChangeCohortPresenter from "./changeCohortPresenter";
-import ChangeCohortView from "./changeCohortView";
-import AddAvailabilityForm from "../referralDetails/addAvailability/AddAvailabilityForm";
-import ChangeCohortForm from "./changeCohortForm";
+import { Request, Response } from 'express'
+import AccreditedProgrammesManageAndDeliverService from '../services/accreditedProgrammesManageAndDeliverService'
+import ControllerUtils from '../utils/controllerUtils'
+import ChangeCohortPresenter from './changeCohortPresenter'
+import ChangeCohortView from './changeCohortView'
+import ChangeCohortForm from './changeCohortForm'
 
 export default class CohortController {
   constructor(
@@ -22,13 +21,17 @@ export default class CohortController {
 
     if (req.method === 'POST') {
       const data = await new ChangeCohortForm(req, referralId).data()
-      await this.accreditedProgrammesManageAndDeliverService.updateCohort(username, referralId, data.paramsForUpdate.updatedCohort)
-      return res.redirect(`/referral/${referralId}/update-cohort?isCohortUpdated=true`)
+      await this.accreditedProgrammesManageAndDeliverService.updateCohort(
+        username,
+        referralId,
+        data.paramsForUpdate.updatedCohort,
+      )
+      return res.redirect(`/referral-details/${referralId}/personal-details?isCohortUpdated=true`)
     }
 
-    const presenter = new ChangeCohortPresenter(referralId, referralDetails, req.originalUrl)
+    const presenter = new ChangeCohortPresenter(referralId, referralDetails, req.session.originPage)
     const view = new ChangeCohortView(presenter)
 
-    ControllerUtils.renderWithLayout(res, view, referralDetails)
+    return ControllerUtils.renderWithLayout(res, view, referralDetails)
   }
 }

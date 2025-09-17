@@ -19,7 +19,7 @@
 
         <div class="govuk-grid-column-three-quarters">
           {% if isCohortUpdated %}
-            {{ mojAlert(successMessageArgs) }}
+            {{ mojAlert(presenter.cohortUpdatedSuccessMessageArgs) }}
           {% endif %}
           <h2 class="govuk-heading-m">Referral summary</h2>
           {{ govukSummaryList(presenter.referralSummary) }}

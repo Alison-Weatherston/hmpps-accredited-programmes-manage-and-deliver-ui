@@ -1,6 +1,6 @@
-import ChangeCohortPresenter from "./changeCohortPresenter";
-import {InsetTextArgs} from "../utils/govukFrontendTypes";
-import {formatCohort} from "../utils/utils";
+import ChangeCohortPresenter from './changeCohortPresenter'
+import { InsetTextArgs } from '../utils/govukFrontendTypes'
+import { formatCohort } from '../utils/utils'
 
 export default class ChangeCohortView {
   constructor(private readonly presenter: ChangeCohortPresenter) {}
@@ -12,6 +12,8 @@ export default class ChangeCohortView {
         presenter: this.presenter,
         currentCohortText: this.currentCohortText,
         radioArgs: this.radioArgs.bind(this),
+        backLinkArgs: this.backLinkArgs(),
+        backlinkUri: this.presenter.backlinkUri,
       },
     ]
   }
@@ -25,15 +27,22 @@ export default class ChangeCohortView {
     }
   }
 
+  private backLinkArgs() {
+    return {
+      text: 'Back',
+      href: this.presenter.backlinkUri,
+    }
+  }
+
   private radioArgs() {
     return {
-      name: "updatedCohort",
+      name: 'updatedCohort',
       fieldset: {
         legend: {
-          text: "Select the new cohort",
+          text: 'Select the new cohort',
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--m"
-        }
+          classes: 'govuk-fieldset__legend--m',
+        },
       },
       items: [
         {
@@ -49,5 +58,4 @@ export default class ChangeCohortView {
       value: this.presenter.fields.updatedCohort.value,
     }
   }
-
 }

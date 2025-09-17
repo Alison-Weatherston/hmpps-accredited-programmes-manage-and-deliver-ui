@@ -19,7 +19,8 @@ import {
   EmotionalWellbeing,
   ThinkingAndBehaviour,
   Attitude,
-  Risks, CohortEnum,
+  Risks,
+  CohortEnum,
 } from '@manage-and-deliver-api'
 import { CaselistFilterParams } from '../caselist/CaseListFilterParams'
 import config, { ApiConfig } from '../config'
@@ -246,13 +247,12 @@ export default class AccreditedProgrammesManageAndDeliverService {
     })) as OffenceAnalysis
   }
 
-  async updateCohort(username: string, referralId: string, updatedCohort: string) {
-
+  async updateCohort(username: string, referralId: string, updateCohort: string) {
     const restClient = await this.createRestClientFromUsername(username)
     return (await restClient.put({
       path: `/referral/${referralId}/update-cohort`,
       headers: { Accept: 'application/json' },
-      data: { cohort: updatedCohort },
+      data: { cohort: updateCohort as CohortEnum },
     })) as ReferralDetails
   }
 }
